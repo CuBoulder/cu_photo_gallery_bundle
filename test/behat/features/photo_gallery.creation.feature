@@ -20,6 +20,19 @@ And I attach the file "cupcakes.jpg" to "edit-field-photo-und-0-upload"
 And I should see "Click to enlarge"
 And the response should contain "alt=\"yellow cupcakes with lavender frosting\""
 
+#  2.5 CREATE REVISIONS TO THE NEW NODE
+Scenario: Node functionality - Create Revision of Photo Gallery node
+Given I am logged in as a user with the "site_owner" role
+And I am on "admin/content"
+And I follow "Gallery One"
+And I follow "Edit"
+ # BROKEN AT THIS TIME And fill in "edit-name" with "osr-test-edit-own" 
+  And fill in "Body" with "Enjoy our Pics"
+ And I press "Save"
+ Then I should see " Photo Gallery Gallery One has been updated."
+  And I should see the link "Revisions"
+
+
 
   # @todo This test fails on Travis after upload around wait step.
   @javascript @files @broken
