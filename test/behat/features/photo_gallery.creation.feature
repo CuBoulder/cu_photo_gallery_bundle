@@ -3,8 +3,22 @@
 Feature: Photo Gallery Bundle
 When I login to a Web Express website
 As an authenticated user
-I should be able to create, edit, and delete a Photo Galler
+I should be able to create, edit, and delete a Photo Gallery
 
+
+# 2) TEST THAT A SIMPLE PHOTO GALLERY CAN BE CREATED AND REVISED
+ Scenario: Node Functionality - A very simple Photo Gallery can be created 
+ Given I am logged in as a user with the "site_owner" role
+  And I am on "node/add/photo-gallery"
+  And fill in "edit-title" with "Gallery One"
+  And fill in "Body" with "Click to enlarge"
+And I fill in " edit-field-photo-und-0-alt" with " yellow cupcakes with lavender frosting"
+And I attach the file "cupcakes.jpg" to "edit-field-photo-und-0-upload"
+  When I press "edit-submit"
+ Then I should be on "/gallery-one"
+ And I should see "Gallery One"
+And I should see "Click to enlarge"
+And the response should contain "alt=\"yellow cupcakes with lavender frosting\""
 
 
   # @todo This test fails on Travis after upload around wait step.
