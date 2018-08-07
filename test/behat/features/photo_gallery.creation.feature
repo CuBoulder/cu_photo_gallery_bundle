@@ -1,21 +1,11 @@
-Feature: Photo Gallery Creation
-  Create different configurations of Photo Galleries.
-  
-   @broken
-  Scenario Outline: All users should be able to view a photo gallery node.
-    Given  I am logged in as a user with the <role> role
-      And I create a "photo_gallery" node with the title "New Gallery"
-    Then I should see <message>
 
-    Examples:
-      | role            | message        |
-      | content_editor  | "New Gallery"  |
-      | site_owner      | "New Gallery"  |
-      | administrator   | "New Gallery"  |
-      | developer       | "New Gallery"  |
-      | edit_my_content | "New Gallery"  |
+@PhotoGallery
+Feature: Photo Gallery Bundle
+When I login to a Web Express website
+As an authenticated user
+I should be able to create, edit, and delete a Photo Galler
 
-  @node_creation @broken
+@node_creation @broken
   Scenario: An anonymous user should be able to view Photo Gallery content.
       And I create a "photo_gallery" node with the title "New Gallery"
     Then I should see "New Gallery"
@@ -44,3 +34,18 @@ Feature: Photo Gallery Creation
     Then I should see "alt two"
     When I click the "#cboxClose" element
     Then I should see "Test Photo Gallery"
+
+ @broken
+ Scenario Outline: All users should be able to view a photo gallery node.
+    Given  I am logged in as a user with the <role> role
+      And I create a "photo_gallery" node with the title "New Gallery"
+    Then I should see <message>
+
+    Examples:
+      | role            | message        |
+      | content_editor  | "New Gallery"  |
+      | site_owner      | "New Gallery"  |
+      | administrator   | "New Gallery"  |
+      | developer       | "New Gallery"  |
+      | edit_my_content | "New Gallery"  |
+      
