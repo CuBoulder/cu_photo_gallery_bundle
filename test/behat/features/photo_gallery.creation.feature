@@ -1,5 +1,24 @@
 Feature: Photo Gallery Creation
   Create different configurations of Photo Galleries.
+  
+   @broken
+  Scenario Outline: All users should be able to view a photo gallery node.
+    Given  I am logged in as a user with the <role> role
+      And I create a "photo_gallery" node with the title "New Gallery"
+    Then I should see <message>
+
+    Examples:
+      | role            | message        |
+      | content_editor  | "New Gallery"  |
+      | site_owner      | "New Gallery"  |
+      | administrator   | "New Gallery"  |
+      | developer       | "New Gallery"  |
+      | edit_my_content | "New Gallery"  |
+
+  @node_creation @broken
+  Scenario: An anonymous user should be able to view Photo Gallery content.
+      And I create a "photo_gallery" node with the title "New Gallery"
+    Then I should see "New Gallery"
 
   # @todo This test fails on Travis after upload around wait step.
   @javascript @files @broken
