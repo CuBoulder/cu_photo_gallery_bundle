@@ -5,10 +5,7 @@ When I login to a Web Express website
 As an authenticated user
 I should be able to create, edit, and delete a Photo Galler
 
-@node_creation @broken
-  Scenario: An anonymous user should be able to view Photo Gallery content.
-      And I create a "photo_gallery" node with the title "New Gallery"
-    Then I should see "New Gallery"
+
 
   # @todo This test fails on Travis after upload around wait step.
   @javascript @files @broken
@@ -49,3 +46,7 @@ I should be able to create, edit, and delete a Photo Galler
       | developer       | "New Gallery"  |
       | edit_my_content | "New Gallery"  |
       
+@node_creation @broken
+  Scenario: An anonymous user should be able to view Photo Gallery content.
+      And I create a "photo_gallery" node with the title "New Gallery"
+    Then I should see "New Gallery"
